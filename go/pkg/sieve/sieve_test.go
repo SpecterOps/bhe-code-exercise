@@ -10,7 +10,9 @@ import (
 func TestNthPrime(t *testing.T) {
 	sieve := NewSieve()
 
+	assert.Equal(t, int64(-1), sieve.NthPrime(-5)) // added to test for negative numbers
 	assert.Equal(t, int64(2), sieve.NthPrime(0))
+	assert.Equal(t, int64(3), sieve.NthPrime(1)) // added because of the way i initiate slice of bools
 	assert.Equal(t, int64(71), sieve.NthPrime(19))
 	assert.Equal(t, int64(541), sieve.NthPrime(99))
 	assert.Equal(t, int64(3581), sieve.NthPrime(500))
@@ -18,7 +20,7 @@ func TestNthPrime(t *testing.T) {
 	assert.Equal(t, int64(17393), sieve.NthPrime(2000))
 	assert.Equal(t, int64(15485867), sieve.NthPrime(1000000))
 	assert.Equal(t, int64(179424691), sieve.NthPrime(10000000))
-	//assert.Equal(t, int64(2038074751), sieve.NthPrime(100000000))
+	//assert.Equal(t, int64(2038074751), sieve.NthPrime(100000000)) // i would absolutely love an explanation how to make this pass
 }
 
 func FuzzNthPrime(f *testing.F) {

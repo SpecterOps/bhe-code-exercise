@@ -28,7 +28,7 @@ func (p *Prime) NthPrime(n int64) int64 {
 	}
 
 	// i actually found this on stackoverflow for finding the max size. 
-	// i don't know much about logarithms other than it is like exponents.
+	// i don't know exactly how this works.
 	limit := int(float64(n) * (math.Log(float64(n)) + math.Log(math.Log(float64(n))))) + 3;
 	// i orginally used this but it was inconsistent and wouldn't always work as n got bigger
 	// 18 is arbitrary. limit is used for initiating array

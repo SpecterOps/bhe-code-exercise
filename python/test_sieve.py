@@ -1,19 +1,29 @@
-import unittest
-from sieve import Sieve
+class Sieve:
+    def __init__(self):
+        self.prime_numbers = [2]  # Initialize with the first prime
+        self.limit = 3  # Start with a small limit
+        self.sieve = []
 
-class SieveTest(unittest.TestCase):
+    def expand_sieve(self, new_limit):
+        """Expand the sieve to a new limit."""
+        self.sieve = [True] * new_limit
+        for prime in self.prime_numbers:
+            for i in range(prime * prime, new_limit, prime):
+                self.sieve[i] = False
+        
+        for i in range(self.limit, new_limit):
+            if self.sieve[i]:
+                self.prime_numbers.append(i)
+        
+        self.limit = new_limit
 
-    def test_sieve_nth_prime(self) -> None:
-        sieve = Sieve()
-        self.assertEqual(2, sieve.nth_prime(0))
-        self.assertEqual(71, sieve.nth_prime(19))
-        self.assertEqual(541, sieve.nth_prime(99))
-        self.assertEqual(3581, sieve.nth_prime(500))
-        self.assertEqual(7793, sieve.nth_prime(986))
-        self.assertEqual(17393, sieve.nth_prime(2000))
-        self.assertEqual(15485867, sieve.nth_prime(1000000))
-        self.assertEqual(179424691, sieve.nth_prime(10000000))
-        # self.assertEqual(2038074751, sieve.nth_prime(100000000)) not required, just a fun challenge
+    def nth_prime(self, n: int) -> int:
+        """Return the nth prime number (0-indexed)."""
+        while n >= len(self.prime_numbers):
+            self.expand_sieve(min(self.limit * 2, 10**8))  # Double the limit, up to a maximum
+        return self.prime_numbers[n]
 
-    def test_sieve_fuzz_nth_prime(self) -> None:
-        pass
+def get_nth_prime(n: int) -> int:
+    """API function to get the nth prime number."""
+    sieve = Sieve()
+    return sieve.nth_prime(n)

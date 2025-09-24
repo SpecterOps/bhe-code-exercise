@@ -18,7 +18,7 @@ relevant to your skill set and the position you are applying for.
 
 ### Requirements
 
-- Fork this repo to implement your solution
+- Click on the "Use this template" button to create a new GitHub repository, in which you may implement your solution
 - The library package provides an API for retrieving the Nth prime number using 0-based indexing where the 0th prime number is 2
 - Interviewers must be able to execute a suite of tests
   - Go: `go test ./...`
@@ -26,7 +26,7 @@ relevant to your skill set and the position you are applying for.
   - Javascript: `npm run test`
   - Python: `python -m unittest test_sieve.py`
 - Your solution is committed to your project's `main` branch, no uncommitted changes or untracked files please
-- Submit the link to your public fork for review
+- Submit the link to your public repo for review
 
 ### Considerations
 
